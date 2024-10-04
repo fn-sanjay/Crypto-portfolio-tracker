@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Portfolio Tracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="images/logo.png" type="image/png">
+</head>
+<!-- Login and Register page -->
+<div class="container">
+    <div class="forms-container">
+      <div class="form-control signup-form">
+        <form action="#">
+            <i class="fa-solid fa-user"></i>
+          <h2>Register</h2>
+          <label>Name:</label>
+          <input type="text" placeholder="Name" required />
+          <label>Email:</label>
+          <input type="email" placeholder="Email" required />
+          <label>Password:</label>
+          <input type="password" placeholder="Password" required />
+          
+          <button>Sign Up</button>
+        </form>
+      </div>
+      <div class="form-control signin-form">
+        <form action="#">
+            <i class="fa-solid fa-user"></i>
+          <h2>Login</h2>
+          <label>Email:</label>
+          <input type="email" placeholder="Email" required />
+          <label>Password:</label>
+          <input type="password" placeholder="Password" required />
+          <button>Sign In</button>
+        </form>
+      </div>
+    </div>
+    <div class="intros-container">
+      <div class="intro-control signin-intro">
+        <div class="intro-control__inner">
+          <h2>Hello Friends!</h2>
+          <p>Enter Your Personal Details and Start Journey with Us.</p>
+          <button id="signup-btn">Sign Up</button>
+        </div>
+      </div>
+      <div class="intro-control signup-intro">
+        <div class="intro-control__inner">
+          <h2>Hello Friends!</h2>
+          <p> To Keep Connect with us Please Login with your Personal Info.  </p>
+          <button id="signin-btn"> Sign In</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+<body>
+ <script src="js/auth.js"></script>   
+</body>
+</html>
