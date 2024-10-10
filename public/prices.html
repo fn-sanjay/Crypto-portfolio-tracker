@@ -10,74 +10,100 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         body {
-            background-color: #121212; /* Dark background */
-            color: #ffffff; /* Light text color */
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .navbar {
+            background-color: green;
+            padding: 10px;
+        }
+        .search-bar {
+            max-width: 250px; /* Adjust search bar width */
+            flex-shrink: 1; /* Allow shrinking */
+        }
+        .table-container {
+            padding: 1rem;
+            margin: auto;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #1e1e1e;
+            max-width: 100%;
+            overflow-x: auto;
         }
         table {
-            background-color: #1e1e1e; /* Dark table background */
+            background-color: #1e1e1e;
+            width: 100%;
+            min-width: 800px;
         }
         th {
-            background-color: #2c2c2c; /* Darker header background */
-            color: #ffffff; /* Header text color */
+            background-color: #2c2c2c;
+            color: #ffffff;
         }
         tr:nth-child(even) {
-            background-color: #1e1e1e; /* Darker even rows */
+            background-color: #1e1e1e;
         }
         tr:hover {
-            background-color: #333333; /* Highlight row on hover */
+            background-color: #333333;
         }
-        /* Optional: Style for images in the table */
         td img {
-            max-width: 20px; /* Set a max width for coin images */
-            max-height: 20px; /* Set a max height for coin images */
-            margin-right: 5px; /* Add some spacing to the right */
+            max-width: 20px;
+            max-height: 20px;
+            margin-right: 5px;
+        }
+        #pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .page-item {
+            margin: 0 5px;
+        }
+        .page-link {
+            padding: 8px 12px;
+            border: 1px solid #007bff;
+            color: #007bff;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .page-link:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        .active .page-link {
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+        }
+        .disabled .page-link {
+            color: #ccc;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body>
-    <div class="px-3 py-2 border-bottom" style="background-color: green;">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                    <div class="input-group">
-                        <span class="input-group-text" id="search-icon">
-                            <i class="bi bi-search"></i>
-                        </span>
-                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                    </div>
-                </a>
-                <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-                    <li>
-                        <a href="#" class="nav-link text-white d-flex flex-column align-items-center">
-                            <i class="bi bi-speedometer2 mb-1" style="font-size: 1.5rem;"></i>
-                            <span>Portfolio</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-white d-flex flex-column align-items-center">
-                            <i class="bi bi-clipboard2-data-fill mb-1" style="font-size: 1.5rem;"></i>
-                            <span>Prices</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-white d-flex flex-column align-items-center">
-                            <i class="bi bi-collection-fill mb-1" style="font-size: 1.5rem;"></i>
-                            <span>Watchlist</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-white d-flex flex-column align-items-center">
-                            <i class="bi bi-person-circle mb-1" style="font-size: 1.5rem;"></i>
-                            <span>You</span>
-                        </a>
-                    </li>
-                </ul>
+    <!-- Navbar with Search -->
+    <div class="navbar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Smaller Search bar on the left -->
+            <div class="input-group search-bar">
+                <span class="input-group-text">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="search" class="form-control" placeholder="Search..." aria-label="Search" oninput="filterTable(event)">
             </div>
+            <!-- Navigation links on the right -->
+            <ul class="nav text-small ms-auto">
+                <li><a href="#" class="nav-link text-white"><i class="bi bi-speedometer2 mb-1"></i> Portfolio</a></li>
+                <li><a href="#" class="nav-link text-white"><i class="bi bi-clipboard2-data-fill mb-1"></i> Prices</a></li>
+                <li><a href="#" class="nav-link text-white"><i class="bi bi-collection-fill mb-1"></i> Watchlist</a></li>
+                <li><a href="#" class="nav-link text-white"><i class="bi bi-person-circle mb-1"></i> You</a></li>
+            </ul>
         </div>
     </div>
-      
-    <div class="p-4 m-3 border rounded shadow">
-        <table id="example" class="display nowrap table table-hover table-striped table-bordered table-sm" style="width:100%">
+
+    <!-- Responsive Table Container -->
+    <div class="table-container mt-4 mx-2 mx-sm-3 mx-md-4 mx-lg-5">
+        <table id="example" class="table table-hover table-striped table-bordered table-sm">
             <thead>
                 <tr>
                     <th>#</th>
@@ -94,12 +120,12 @@
             </tbody>
         </table>
         <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center" id="pagination">
+            <ul class="pagination" id="pagination">
                 <!-- Pagination buttons will be populated here -->
             </ul>
         </nav>
     </div>
 
-    <script src="js/scripts.js"></script> <!-- Link to external JS file -->
+    <script src="js/prices.js"></script> <!-- Link to external JS file -->
 </body>
 </html>
