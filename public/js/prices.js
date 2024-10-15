@@ -74,7 +74,9 @@ function renderTable(data, page) {
             <tr>
                 <td>${i + 1}</td>
                 <td>
-                    <img src="${entry.image}" alt="${entry.name}" style="width:20px; height:20px;"> ${entry.name} (${entry.symbol})
+                     <a href="details.html?id=${entry.id}" class="text-black">
+                        <img src="${entry.image}" alt="${entry.name}" style="width:20px; height:20px;"> ${entry.name} (${entry.symbol})
+            </a>
                 </td>
                 <td>${entry.current_price}</td>
                 <td>${entry.high_24h ? entry.high_24h : 'N/A'}</td>
@@ -83,7 +85,7 @@ function renderTable(data, page) {
                 <td>${entry.market_cap ? entry.market_cap : 'N/A'}</td>
             </tr>
         `;
-        tbody.innerHTML += row; // Add the row to the table body
+        tbody.innerHTML += row; 
     }
     renderPagination(data.length); // Update pagination
 }
@@ -174,3 +176,5 @@ function changePage(page) {
 
 // Initial fetch and render
 fetchPrices();
+
+

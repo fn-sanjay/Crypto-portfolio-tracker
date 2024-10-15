@@ -21,7 +21,7 @@ console.log("API Key from env:", process.env.API_KEY);
 
 
 // Create the cache directory if it doesn't exist
-const cacheDir = './../cache';
+const cacheDir = '../cache';
 if (!fs.existsSync(cacheDir)) {
     fs.mkdirSync(cacheDir);
     console.log('Created cache directory.');
