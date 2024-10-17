@@ -10,13 +10,13 @@ router.get('/bitcoin_data.json', (req, res) => {
 
     fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
-            return res.status(500).json({ error: 'Failed to read bitcoin data.' });
+            return res.status(500).json({ error: 'Failed to read tron data.' });
         }
         try {
             const jsonData = JSON.parse(data);
             res.json(jsonData);
         } catch (parseError) {
-            return res.status(500).json({ error: 'Failed to parse bitcoin data.' });
+            return res.status(500).json({ error: 'Failed to parse tron data.' });
         }
     });
 });

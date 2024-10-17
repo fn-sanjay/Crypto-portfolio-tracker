@@ -24,25 +24,33 @@
         margin: 0;
         padding: 0;
       }
+
       .navbar {
         background-color: green;
         padding: 10px;
       }
+
       .search-bar {
         max-width: 250px;
         flex-shrink: 1;
       }
+
       .main-container {
         display: flex;
-        height: calc(100vh - 60px); /* Full height minus navbar height */
+        height: calc(100vh - 60px);
+        /* Full height minus navbar height */
         padding-top: 10px;
       }
+
       .left-half {
         width: 50%;
+
+        
         display: flex;
         flex-direction: column;
         padding-right: 10px;
       }
+
       .section-2,
       .section-3 {
         background-color: #333;
@@ -50,29 +58,104 @@
         padding: 20px;
         border-radius: 8px;
       }
+
       .section-2 {
-        flex: 0 0 25%; /* Top-left 25% */
+        flex: 0 0 25%;
+        /* Top-left 25% */
       }
+
       .section-3 {
-        flex: 1; /* Bottom-left 75% */
+        flex: 1;
+        /* Bottom-left 75% */
         background-color: #444;
       }
+
       .right-half {
         width: 50%;
+        height:fit-content;
         padding-left: 10px;
       }
+
       .section-1 {
         background-color: #2c2c2c;
         padding: 20px;
         height: 99%;
         border-radius: 8px;
       }
+
       #graph-container {
-        width:auto;
+        width: auto;
         height: auto;
-        max-width: 800px;
+        max-width: 900px;
         max-height: 600px;
       }
+
+      #coin-name {
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 700;
+        font-size: 5.5em;
+        padding-left: 166px;
+      }
+
+      #coin-price {
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 700;
+        font-size: 2.5em;
+        width: max-content;
+        /* display: flex; */
+        align-items: left;
+        margin-left: auto;
+      }
+
+      #coin-symbol {
+        font-family: "Times New Roman", Times, serif;
+        font-weight: 500;
+        font-size: 2.5em;
+      }
+
+      #coin-image {
+        margin-left: 30px;
+        margin-top: -144px;
+      }
+
+      .symbol {
+        display: flex;
+        align-items: flex-end;
+      }
+
+      #crypto-details {
+        display: grid;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1.5em;
+      }
+
+      .data-item {
+        display: flex;
+        justify-content: space-between; /* Space between items */
+        margin: 5px 0; /* Space between each data item */
+      }
+
+      .variable {
+        flex: 1; /* Take equal space */
+        text-align: left; /* Align left */
+      }
+
+      .colon {
+        flex: 0; /* Don't grow */
+        text-align: center; /* Center alignment for colon */
+        margin: 0 5px; /* Optional margin for space */
+      }
+
+      .value {
+        flex: 1; /* Take equal space */
+        text-align: right; /* Align right */
+      }
+
+      /* .section-2 {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+      } */
       /* .graph-box {
         background-color: #2c2c2c;
         border: 1px solid #444;
@@ -100,6 +183,7 @@
       } */
     </style>
   </head>
+
   <body>
     <!-- Navbar -->
     <div class="navbar">
@@ -146,30 +230,87 @@
       <!-- Left Half: Section 2 and Section 3 stacked -->
       <div class="left-half">
         <div class="section-2">
-          <h2>Section 2</h2>
-          <p>Top-left section, taking up 25% of the left side.</p>
+          <h2 id="coin-name">Coin Name</h2>
+          <img
+            id="coin-image"
+            src=""
+            alt="Coin Image"
+            style="max-width: 100px"
+          />
+          <div class="symbol">
+            <p id="coin-symbol">Symbol:</p>
+            <p id="coin-price">Price:</p>
+          </div>
         </div>
         <div class="section-3">
-          <h2>Section 3</h2>
-          <p>Bottom-left section, occupying 75% of the left side.</p>
+          <div id="crypto-details">
+            <h2>Market Data</h2>
+            <div class="data-item">
+              <span class="variable">Market Cap</span>
+              <span class="colon">:</span>
+              <span class="value" id="market_cap"></span>
+            </div>
+            <div class="data-item">
+              <span class="variable">Market Cap Rank</span>
+              <span class="colon">:</span>
+              <span class="value" id="market_cap_rank"></span>
+            </div>
+            <div class="data-item">
+              <span class="variable">Fully Diluted Valuation</span>
+              <span class="colon">:</span>
+              <span class="value" id="fully_diluted_valuation"></span>
+            </div>
+            <div class="data-item">
+              <span class="variable">Total Volume</span>
+              <span class="colon">:</span>
+              <span class="value" id="total_volume"></span>
+            </div>
+            <div class="data-item">
+              <span class="variable">Price Change (24h)</span>
+              <span class="colon">:</span>
+              <span class="value" id="price_change_24h"></span>
+            </div>
+            <div class="data-item">
+              <span class="variable">Market Cap Change (24h)</span>
+              <span class="colon">:</span>
+              <span class="value" id="market_cap_change_24h"></span>
+            </div>
+            <div class="data-item">
+              <span class="variable">Circulating Supply</span>
+              <span class="colon">:</span>
+              <span class="value" id="circulating_supply"></span>
+            </div>
+            <div class="data-item">
+              <span class="variable">Total Supply</span>
+              <span class="colon">:</span>
+              <span class="value" id="total_supply"></span>
+            </div>
+            <div class="data-item">
+              <span class="variable">Max Supply</span>
+              <span class="colon">:</span>
+              <span class="value" id="max_supply"></span>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- Right Half: Section 1 -->
       <div class="right-half">
         <div class="section-1">
-          <h2>Section 1</h2>
+          <h2>Graph</h2>
           <p>
-            This is the right side of the page, taking up 50% of the entire
-            width.
+            Select which time You need
           </p>
+          <button type="button" class="btn btn-success">7d</button>
+          <button type="button" class="btn btn-success">1m</button>
+          <button type="button" class="btn btn-success">3m</button>
+          <button type="button" class="btn btn-success">1yr</button>
           <div id="graph-container">
-            <svg id="price-graph" width="800" height="600"></svg>
-            <!-- <div id="graph-values" class="values-box">
-              <span id="min-value"></span>
-              <span id="max-value"></span>
-              <span id="current-value"></span>
-            </div> -->
+            <svg id="price-graph" width="900" height="500"></svg>
+            
+          </div>
+          <h2>Description :</h2>
+          
+          <div id="coin-description">
+            
           </div>
         </div>
       </div>
