@@ -5,8 +5,8 @@ import path from 'path';
 const router = express.Router();
 
 // Define the route to get bitcoin data
-router.get('/bitcoin_data.json', (req, res) => {
-    const filePath = path.join(process.cwd(), 'cache', 'bitcoin_data.json'); // Ensure correct path
+router.get('/tron_data.json', (req, res) => {
+    const filePath = path.join(process.cwd(), 'cache', 'tron_data.json'); // Ensure correct path
 
     fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {

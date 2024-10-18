@@ -78,11 +78,11 @@ function renderTable(data, page) {
                         <img src="${entry.image}" alt="${entry.name}" style="width:20px; height:20px;"> ${entry.name} (${entry.symbol})
             </a>
                 </td>
-                <td>${entry.current_price}</td>
-                <td>${entry.high_24h ? entry.high_24h : 'N/A'}</td>
-                <td>${entry.low_24h ? entry.low_24h : 'N/A'}</td>
-                <td>${entry.total_volume}</td>
-                <td>${entry.market_cap ? entry.market_cap : 'N/A'}</td>
+                <td>₹ ${entry.current_price}</td>
+                <td>₹ ${entry.high_24h ? entry.high_24h : 'N/A'}</td>
+                <td>₹ ${entry.low_24h ? entry.low_24h : 'N/A'}</td>
+                <td>₹ ${entry.total_volume}</td>
+                <td>₹ ${entry.market_cap ? entry.market_cap : 'N/A'}</td>
             </tr>
         `;
         tbody.innerHTML += row; 
