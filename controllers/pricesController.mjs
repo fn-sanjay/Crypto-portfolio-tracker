@@ -116,7 +116,7 @@ function saveCoinsToFile(coins) {
         console.error('Error saving data to file:', error);
     }
 }
-
+export { fetchAllCoins };
 // Call the function to start fetching coins
 fetchAllCoins()
     .then(() => console.log('Finished fetching all coins.'))
