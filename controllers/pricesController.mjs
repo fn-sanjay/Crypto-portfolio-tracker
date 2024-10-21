@@ -21,13 +21,24 @@ console.log("API Key from env:", process.env.API_KEY);
 
 
 // Create the cache directory if it doesn't exist
-const cacheDir = '../cache';
+// const cacheDir = '../cache';
+// if (!fs.existsSync(cacheDir)) {
+//     fs.mkdirSync(cacheDir);
+//     console.log('Created cache directory.');
+// } else {
+//     console.log('Cache directory already exists.');
+// }
+
+// Define the cache directory as an absolute path
+const cacheDir = path.join(process.cwd(), 'cache');
+
+// Check if the cache directory exists, and create it if it doesn't
 if (!fs.existsSync(cacheDir)) {
-    fs.mkdirSync(cacheDir);
+    fs.mkdirSync(cacheDir, { recursive: true }); // recursive ensures it creates all needed directories
     console.log('Created cache directory.');
 } else {
     console.log('Cache directory already exists.');
-}
+}   
 
 async function fetchAllCoins() {
     let coins = [];
@@ -118,6 +129,6 @@ function saveCoinsToFile(coins) {
 }
 export { fetchAllCoins };
 // Call the function to start fetching coins
-fetchAllCoins()
-    .then(() => console.log('Finished fetching all coins.'))
-    .catch(err => console.error('Error occurred during fetching:', err));
+// fetchAllCoins()
+//     .then(() => console.log('Finished fetching all coins.'))
+//     .catch(err => console.error('Error occurred during fetching:', err));
