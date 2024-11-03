@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import pricesRoutes from './routes/pricesRoutes.js';
 import detailsRoutes from './routes/detailsRoutes.js'; // Adjust if needed
 import { fetchAllCoins } from './controllers/pricesController.mjs'; // Import fetchAllCoins
+import authRoutes from "./routes/authRoutes.js";
 
 // Initialize environment variables
 dotenv.config();
@@ -20,10 +21,11 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 // Use the routes for specific paths
 app.use('/prices', pricesRoutes); // Matches your fetch call for prices
 app.use('/details', detailsRoutes); // Matches your fetch call for details
+app.use("/auth", authRoutes);
 
 // Serve the main page at the root URL
 app.get('/', (req, res) => {
-    res.sendFile(path.join(process.cwd(), 'public', 'prices.html')); // Correct path to prices.html
+    res.sendFile(path.join(process.cwd(), 'public', 'auth.html'));
 });
 
 // Start fetching coins in the background
